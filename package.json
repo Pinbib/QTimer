@@ -1,0 +1,21 @@
+{
+  "name": "qtimer",
+  "main": "./dist/qtimer.js",
+  "type": "module",
+  "scripts": {
+    "rollup": "rollup -c rollup.config.js",
+    "pkg:win": "npx pkg -t node18-win dist/qtimer.js -o ./dist/win/qtimer",
+    "pkg:macos": "npx pkg -t node18-macos dist/qtimer.js -o ./dist/macos/qtimer",
+    "pkg:linux": "npx pkg -t node18-linux dist/qtimer.js -o ./dist/linux/qtimer",
+    "build": "npm run rollup && npm run pkg:win && npm run pkg:macos && npm run pkg:linux"
+  },
+  "author": "PinBib",
+  "license": "ISC",
+  "dependencies": {
+    "console-table-printer": "^2.12.0",
+    "qp-color": "^0.0.1"
+  },
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^15.2.3"
+  }
+}
