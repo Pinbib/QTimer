@@ -16,12 +16,13 @@ if (process.argv[2] === "--log") {
 } else if (process.argv[2] === "--count") {
     try {
         type = "count";
-        config.count = Number(process.argv[3]);
-
-        command = process.argv.slice(4).join(" ");
+        let count = Number(process.argv[3]);
+        if (!isNaN(count)) {
+            config.count = count;
+            command = process.argv.slice(4).join(" ");
+        } else throw new Error();
     } catch (err) {
         if (err) {
-            console.log(colorize.rb("An error occurred."));
             type = undefined;
         }
     }
@@ -56,6 +57,8 @@ function convertTimeUnit(milliseconds) {
 }
 
 try {
+    if (!command) throw new Error();
+
     function spawn(command) {
         return new Promise((resolve, reject) => {
             let com = exec(command);
