@@ -22,7 +22,15 @@ var QTIMER = `\n░██████╗░████████╗██╗�
 
 console.log(colorize.gi(QTIMER));
 
-let command = process.argv.slice(2).join(" ");
+let type = undefined;
+let command = "";
+
+if (process.argv[2] === "--log") {
+    type = "log";
+    command = process.argv.slice(3).join(" ");
+} else {
+    command = process.argv.slice(2).join(" ");
+}
 
 function formatTime(time) {
     return `${time.getHours()}:${time.getMinutes()}:${time.getSeconds()}:${time.getMilliseconds()}`;
@@ -51,24 +59,14 @@ try {
 
             callback(info);
         });
+
+        if (type === "log") {
+            com.stderr.on("data", console.log);
+            com.stdout.on("data", console.log);
+
+            // TODO: add input capability
+        }
     };
-
-    // spawn(command, (info1) => {
-    //     spawn(command, (info2) => {
-    //         spawn(command, (info3) => {
-    //             let average = Math.round((info1.time + info2.time + info3.time) / 3);
-
-    //             info1.time = colorize.yb(info1.time + "ml");
-    //             info2.time = colorize.yb(info2.time + "ml");
-    //             info3.time = colorize.yb(info3.time + "ml");
-
-    //             printTable([
-    //                 info1, info2, info3,
-    //                 { start: colorize.yb("Average"), end: colorize.yb("Time"), exitCode: colorize.yi("0"), time: colorize.yb(average + "ml") }
-    //             ])
-    //         });
-    //     });
-    // });
 
     spawn(command, (info) => {
         info.time = colorize.yb(info.time + "ml");
