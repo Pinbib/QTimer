@@ -67,7 +67,7 @@ It is also possible to specify in which mode the command will be launched:
 
 ```qtimer [--mode] [command]```
 
-- `[--mode]`: String - this is the mode in which the command will be executed. There are two modes: [`--log`](#mode---log), [`--count`](#mode---count);
+- `[--mode]`: String - this is the mode in which the command will be executed (modes are not combined). There are two modes: [`--log`](#mode---log), [`--count`](#mode---count);
 
 ### Mode: --log
 
