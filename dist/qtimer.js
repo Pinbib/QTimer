@@ -51,10 +51,6 @@ function formatTime(time) {
 }
 
 function convertTimeUnit(milliseconds) {
-    if (milliseconds < 0 || isNaN(milliseconds)) {
-        return "NaN";
-    }
-
     if (milliseconds === 0) {
         return "0ml";
     }
@@ -69,7 +65,11 @@ function convertTimeUnit(milliseconds) {
 
     const amount = Math.floor(milliseconds / coefficients[unit]);
 
-    return `${amount}${unit}`;
+    if (unit && !isNaN(amount)) {
+        return `${amount}${unit}`;
+    } else {
+        return `${milliseconds}ml`;
+    }
 }
 
 try {
