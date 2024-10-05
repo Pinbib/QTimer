@@ -3,11 +3,11 @@
 A small program for tracking the execution time of commands.
 
 - [QTimer](#qtimer)
-    - [Installation](#installation)
-    - [Using](#using)
-    - [Modes](#modes)
-        - [--log](#mode---log)
-        - [--count](#mode---count)
+  - [Installation](#installation)
+  - [Using](#using)
+  - [Modes](#modes)
+    - [--log](#mode---log)
+    - [--count](#mode---count)
 
 # Installation
 
@@ -16,10 +16,22 @@ To use, install the executable for your OS:
 | OS | FILE | TESTED |
 |----|------|--------|
 | Windows | [HERE](./dist/win/qtimer.exe)| ✅|
-| Linux | [HERE](./dist/linux/qtimer)| ❌ |
+| Linux | [HERE](./dist/linux/qtimer)| ✅ |
 | MacOS | [HERE](./dist/macos/qtimer)| ❌ |
 
-After installation, you can transfer the file to `C:/Windows/System32/` on Windows or to `/usr/bin/` or `/bin/` on Linux and MacOS.
+After downloading, After downloading, for Windows, open a terminal with administrator rights in the folder where the file was downloaded and execute the command:
+
+```cmd
+move qtimer.exe C:/Windows/System32
+```
+
+For Linux, open a terminal in the folder where the file was downloaded and execute the following commands:
+
+```bash
+sudo mv qtimer /usr/local/bin
+
+sudo chmode +x /usr/local/bin
+```
 
 # Using
 
@@ -32,6 +44,7 @@ To use, use the command:
 Example:
 
 We have file index.js:
+
 ```js
 setTimeout(()=>console.log(1), 5000);
 ```
@@ -76,6 +89,7 @@ If you use this mode, if your command outputs something, you will see it.
 Example:
 
 index.js:
+
 ```js
 setTimeout(()=>console.log(1), 5000);
 ```
@@ -113,6 +127,7 @@ Using this mode, you can specify how many times your command will be executed.
 Example:
 
 index.js:
+
 ```js
 setTimeout(()=>console.log(1), 5000);
 ```
