@@ -30,7 +30,7 @@ For Linux, open a terminal in the folder where the file was downloaded and execu
 ```bash
 sudo mv qtimer /usr/local/bin
 
-sudo chmode +x /usr/local/bin
+sudo chmode +x /usr/local/bin/qtimer
 ```
 
 # Using
